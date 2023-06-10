@@ -1,7 +1,25 @@
+Modifies
+================
+* Enabled to set locale for individual view in XML activity file.
+
+        ```
+        <com.blackcat.currencyedittext.CurrencyEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:allow_negative_values="true"
+            app:locale="pt_BR"
+            android:id="@+id/cet_negative_values"
+        />
+        ```
+
+        The correct format is "lang_COUNTRY"
+
+* Updated some packages and the gradle
+
 CurrencyEditText
 ================
 
-`CurrencyEditText` is an extension of Android's EditText view object. It is a module designed to provide ease-of-use when using an EditText field for gathering currency information from a user. 
+`CurrencyEditText` is an extension of Android's EditText view object. It is a module designed to provide ease-of-use when using an EditText field for gathering currency information from a user.
 
 `CurrencyEditText` is designed to work with all ISO-3166 compliant locales (which *should* include all locales Android ships will).
 
@@ -22,7 +40,7 @@ dependencies{
     compile 'com.github.blackcat27:library:2.0.2-SNAPSHOT'
 }
 ```
-        
+
 Alternatively, if you're having issues with mavenCentral, try JitPack:
 
 ```Gradle
@@ -66,14 +84,14 @@ As a user enters additional values, they will appear starting with the right-mos
 
 
 Depending on the users Locale and Language settings, the displayed text will automatically be formatted to the users local standard. For example, when the users selects
-  "German", the Euro symbol appears on the right, as seen below.
+"German", the Euro symbol appears on the right, as seen below.
 
 ![Entered Text](/../screenshots/screenshots/CurrencyEditText_show_formatting_in_german.PNG?raw=true)
 
 Hints
 ===============
-By default, `CurrencyEditText` provides a 'hint' value for the text box. This default value is the Currency Code symbol for the users given Locale setting. This is 
-useful for debugging purposes, as well as provides clean and easy to understand guidance to the user. 
+By default, `CurrencyEditText` provides a 'hint' value for the text box. This default value is the Currency Code symbol for the users given Locale setting. This is
+useful for debugging purposes, as well as provides clean and easy to understand guidance to the user.
 
 If you'd prefer to set your own hint text, simply set the hint the same way you would for any other `EditText` field. You can do this either in your XML layout
 or in code. To remove the hint entirely, set the hint to an empty string ("").
@@ -85,7 +103,7 @@ Attributes
 
 
 
-By default, `CurrencyEditText` does not allow negative number input. This is due to the fact that by far the most common use-case for currency input involves transaction information, where the absolute value of the transaction is entered separately from declaring a deposit or withdrawl. 
+By default, `CurrencyEditText` does not allow negative number input. This is due to the fact that by far the most common use-case for currency input involves transaction information, where the absolute value of the transaction is entered separately from declaring a deposit or withdrawl.
 
 However, if you do need to support negative number input, you can enable it by setting the allow_negative_values attribute.
 
@@ -124,17 +142,17 @@ tb.setDecimalDigits(0);
 Retrieving and Handling Input
 =============================
 
-As `CurrencyEditText` is an extension of the `EditText` class, it contains all the same getters and setters that `EditText` provides. 
+As `CurrencyEditText` is an extension of the `EditText` class, it contains all the same getters and setters that `EditText` provides.
 
 To retrieve the fully formatted String value as shown to the user, simply call your `CurrencyEditText` objects `getText()` method.
 
 However, you'll likely need to actually do something useful with the users input. To help developers more easily retrieve this information, `CurrencyEditText` provides the `getRawValue()` method. This method provides back the raw numeric values as they were input by the user, and should be treated as if it were a whole value of the users local currency.
-For example, if the text of the field is $13.37, this method will return a Long with a value of 1337, as penny is the lowest denomination for USD. 
+For example, if the text of the field is $13.37, this method will return a Long with a value of 1337, as penny is the lowest denomination for USD.
 
 It is the responsibility of the calling application to handle this value appropriately. Keep in mind that dividing this number to convert it to some other denomination
- could possibly result in floating point rounding errors, and should be done with great caution. 
- 
-To assist with needing to perform work on locale-specific values after retrieval, `CurrencyEditText` provides the getLocale() method which returns the locale currently being used by that instance for its formatting. 
+could possibly result in floating point rounding errors, and should be done with great caution.
+
+To assist with needing to perform work on locale-specific values after retrieval, `CurrencyEditText` provides the getLocale() method which returns the locale currently being used by that instance for its formatting.
 
 Locales
 =======
@@ -142,7 +160,7 @@ Locales
 CurrencyEditText relies on a `Locale` object to properly format the given value. There are two `Locale` variables that are exposed via getters and setters on a given `CurrencyEditText` object: locale and defaultLocale.
 
 `locale` is the users default locale setting based upon their Android configuration settings. This value is editable by the user in Android settings, as well as via the `CurrencyEditText` API. Note that this value, when retrieved from the end-users device, *is not* always compatible with ISO-3166. This is used as the "happy path" variable, but due to the potential lack of ISO-3166 compliance, `CurrencyEditText` will fall back to `defaultLocale` in the event of an error.
- 
+
 `defaultLocale` is a separate value which is treated as a fallback in the event that the provided locale value fails. This may occur due to the `locale` value not being part of the ISO-3166 standard. See `Java.util.Locale.getISOCountries()` for a list of supported values. Note that the list of supported values is hard-coded into each version of Java, therefore over time, the list of supported ISO's may change.
 
 The default value for defaultLocale is `Locale.US`. Both this, and the locale value, can be overwritten using setters found on the `CurrencyEditText` object. Be very careful to ensure that should you override defaultLocale's value, you only use values supported by ISO-3166, or an IllegalArgumentException will be thrown by the formatter.
@@ -173,7 +191,7 @@ String formattedVal = cet.formatCurrency(rawVal);
 Decimal Digits
 ===============
 
-By default, the `CurrencyEditText` text formatter will use the `locale` object to obtain information about the expected currency. This includes the location of the decimal separator for lower denominations (e.g. dollars vs. cents). If you would like to alter the decimal placement position, you can use the setDecimalDigits() method. This is very useful in some cases, for instance, if you only wish to show whole dollar amounts. 
+By default, the `CurrencyEditText` text formatter will use the `locale` object to obtain information about the expected currency. This includes the location of the decimal separator for lower denominations (e.g. dollars vs. cents). If you would like to alter the decimal placement position, you can use the setDecimalDigits() method. This is very useful in some cases, for instance, if you only wish to show whole dollar amounts.
 
 ```java
 CurrencyEditText cet = new CurrencyEditText();
@@ -207,5 +225,5 @@ Why doesn't CurrencyEditText do \<x\>?
 Use at your own risk!
 =====================
 
-As called out in the Apache license (which this project falls under), by using this software you agree to use it AS-IS. I make no claims that this code is 100% bug-free or otherwise without issue. While I've done my best to ensure that rounding errors don't come into play and that all codeflows have been tested, I cannot 
+As called out in the Apache license (which this project falls under), by using this software you agree to use it AS-IS. I make no claims that this code is 100% bug-free or otherwise without issue. While I've done my best to ensure that rounding errors don't come into play and that all codeflows have been tested, I cannot
 guarantee or provide any sort of warranty that this code will work for you. The onus is on you, and you alone, to analyze this software and determine if it's featureset and quality meet your needs.
