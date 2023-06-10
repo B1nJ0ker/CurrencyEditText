@@ -1,7 +1,9 @@
 Modifies
 ================
 Enabled to set locale for individual view in XML activity file.
+
 Ex: app:locale = "pt_BR" 
+
 The correct format is "lang_COUNTRY"
 
 
