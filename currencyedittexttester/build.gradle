@@ -3,8 +3,8 @@ apply plugin: 'com.android.application'
 buildscript {
     repositories {
         mavenCentral()
-        jcenter()
         google()
+        jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
@@ -18,7 +18,7 @@ android {
     defaultConfig {
         applicationId "com.blackcat.currencyedittexttester"
         minSdkVersion 21
-        targetSdkVersion 26
+        targetSdkVersion 33
         versionCode 1
     }
     buildTypes {
