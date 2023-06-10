@@ -26,6 +26,7 @@ public class CurrencyEditText extends EditText {
 
     private int decimalDigits = 0;
 
+
     /*
     PUBLIC METHODS
      */
@@ -243,6 +244,14 @@ public class CurrencyEditText extends EditText {
 
         this.setAllowNegativeValues(array.getBoolean(R.styleable.CurrencyEditText_allow_negative_values, false));
         this.setDecimalDigits(array.getInteger(R.styleable.CurrencyEditText_decimal_digits, decimalDigits));
+
+        if(array.hasValue(R.styleable.CurrencyEditText_locale)) {
+            String customLocaleString = array.getString(R.styleable.CurrencyEditText_locale);
+            if(!customLocaleString.isEmpty()){
+                String[] customLocaleStringSplited = customLocaleString.split("_");
+                this.configureViewForLocale(new Locale(customLocaleStringSplited[0], customLocaleStringSplited[1]));
+            }
+        }
 
         array.recycle();
     }

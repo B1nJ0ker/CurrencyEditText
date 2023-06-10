@@ -50,8 +50,8 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':currencyedittext')
 
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.jakewharton:butterknife:10.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation "org.mockito:mockito-core:2.8.47"
@@ -60,5 +60,5 @@ dependencies {
     testImplementation "org.robolectric:robolectric:4.2.1"
     testImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     testImplementation 'com.github.mikinw:DataSet:4006389335'
-    testAnnotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    testAnnotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
 }

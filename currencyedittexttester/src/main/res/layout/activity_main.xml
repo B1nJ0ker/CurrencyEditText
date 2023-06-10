@@ -111,6 +111,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:allow_negative_values="true"
+                app:locale="en_US"
                 android:id="@+id/cet_negative_values"
                 />
         </LinearLayout>
@@ -174,6 +175,7 @@
 
                 <com.blackcat.currencyedittext.CurrencyEditText
                     android:layout_width="0dp"
+                    app:locale="pt_BR"
                     android:layout_height="wrap_content"
                     android:id="@+id/decimal_digits_tool_cet"
                     android:layout_weight="3"
