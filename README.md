@@ -1,18 +1,22 @@
-Modifies
+Modifies ( v2.0.2.1 )
 ================
+https://github.com/B1nJ0ker/CurrencyEditText/releases/download/2.0.2.1/currencyedittext-debug.aar
 * Enabled to set locale for individual view in XML activity file.
 
-        ```
-        <com.blackcat.currencyedittext.CurrencyEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:allow_negative_values="true"
-            app:locale="pt_BR"
-            android:id="@+id/cet_negative_values"
-        />
-        ```
-
-        The correct format is "lang_COUNTRY"
+```xml
+<com.blackcat.currencyedittext.CurrencyEditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:allow_negative_values="true"
+                                                
+    app:locale="pt_BR"
+                                                
+    android:id="@+id/cet_negative_values"
+/>
+```
+```
+The correct format is "lang_COUNTRY"
+```
 
 * Updated some packages and the gradle
 
@@ -26,7 +30,7 @@ CurrencyEditText
 If you find that a certain locale is causing issues, please open an Issue in the Issue Tracker.
 
 
-Getting Started
+Getting Started 
 ================
 
 Getting started is easy. Just add the library as a dependency in your projects build.gradle file. Be sure you've listed mavenCentral as a repository:
