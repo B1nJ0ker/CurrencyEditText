@@ -1,6 +1,6 @@
-Modifies ( v2.0.2.1 )
+Updates ( v2.0.2.1 )
 ================
-https://github.com/B1nJ0ker/CurrencyEditText/releases/download/2.0.2.1/currencyedittext-debug.aar
+
 * Enabled to set locale for individual view in XML activity file.
 
 ```xml
